@@ -13,7 +13,6 @@ function Login() {
 
     const toast = useRef(null);
 
-
     const showError = () => {
       toast.current.show({severity:'error', summary: 'Error Message', detail:'Login ou senha inválidas', life: 3000});
     }
@@ -34,7 +33,6 @@ function Login() {
         <form id="formLogin" className="p-fluid" onSubmit={login} >
           <Toast ref={toast} position="top-right" />
           <div className="" >
-            <div className="p-d-flex p-jc-center">asas{/*<Logo />*/}</div>
             <h1 className="p-d-flex p-jc-center">Finanças Legal</h1>
           </div>
             <div className="p-field ">

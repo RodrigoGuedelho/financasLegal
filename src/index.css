@@ -1,17 +1,20 @@
 body {
   margin: 0px;
 }
+.font-color-primary {
+  color: #2cf3c1;
+}
 .p-button  {
-  background-color: #f94343 ;
-  border: 1px solid #eca1a1;
+  background-color: #2cf3c1;
+  border: 1px solid #0be7b0;
 }
 
 .p-button:hover  {
-  background-color: #f75252 !important;
-  border: 1px solid #940808 !important;
+  background-color: #0decb5 !important;
+  border: 1px solid #05ad83 !important;
 }
 .p-toolbar {
-  background: #f94343;
+  background: #38f1c3;
   padding: 0.1rem;
 }
 
@@ -43,3 +46,5 @@ body {
 .display-none {
   display: none;
 }
+
+
