@@ -16,28 +16,28 @@ function Layout() {
   const menu = useRef(null);
   const items = [
     {
-        label:'Pedidos',
+        label:'Contas',
         icon:'pi pi-fw pi-file',
         items:[
             {
               label:'Novo',
               icon:'pi pi-fw pi-plus',
               command: function() {
-                window.location.href="/pedidos/add"; 
+                window.location.href="/contas/add"; 
               }
             },
             {
               label:'Listar',
               icon:'pi pi-fw pi-search',
               command: function() {
-                window.location.href="/pedidos";  
+                window.location.href="/contas";  
               }
             },
             {
               label:'Relatórios',
               icon:'pi pi-fw pi-file-pdf',
               command: function() {
-                window.location.href="/pedidos/relatorio"; 
+                window.location.href="/contas/relatorio"; 
               }
             }
                 
@@ -45,37 +45,19 @@ function Layout() {
     },
 
     {
-      label:'Produtos',
+      label:'Grupo de contas',
       icon:'pi pi-fw pi-file',
       items:[
           {
             label:'Novo',
             icon:'pi pi-fw pi-plus',
-            url: "/produtos/add"
+            url: "/grupo-contas/add"
             
           },
           {
             label:'Listar',
             icon:'pi pi-fw pi-search',
-            url: "/produtos"
-          }
-              
-      ]
-    },
-
-    {
-      label:'Mesas',
-      icon:'pi pi-fw pi-file',
-      items:[
-          {
-            label:'Novo',
-            icon:'pi pi-fw pi-plus',
-            url: "/mesas/add"
-          },
-          {
-            label:'Listar',
-            icon:'pi pi-fw pi-search',
-            url: "/mesas"
+            url: "/grupo-contas"
           }
               
       ]
@@ -112,8 +94,8 @@ function Layout() {
 
   const leftContents = (
     <React.Fragment>
-     <Button id="button-logo"  onClick={() => setVisibleSidebar(true)}>{/*<Logo />*/}</Button>   
-      <Link className="link-menu" to="/">Pedido Legal</Link> 
+      <Button id="button-logo"  onClick={() => setVisibleSidebar(true)}>{/*<Logo />*/}</Button>   
+      <Link className="link-menu" to="/">Finanças Legal</Link> 
     </React.Fragment>
   );
 

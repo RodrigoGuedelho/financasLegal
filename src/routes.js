@@ -1,6 +1,9 @@
 import React from "react";
 import {BrowserRouter, Routes, Route,  Navigate} from "react-router-dom";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import ListUsuario from "./pages/ListUsuario";
+import CadUsuario from "./pages/CadUsuario";
 import Layout from "./components/Layout";
 
 import auth from "./auth";
@@ -17,8 +20,24 @@ export default function RoutesApp(props) {
         <Route  path="/" element={
           <PrivateRoute>
             <Layout />
-            <h1>Tela principal</h1>
-            <button onClick={auth.logout}>Logout</button>
+            <Home />
+          </PrivateRoute>} />
+
+        <Route  path="/usuarios" element={
+          <PrivateRoute>
+            <Layout />
+            <ListUsuario />
+          </PrivateRoute>} />
+
+        <Route  path="/usuarios/add" element={
+          <PrivateRoute>
+            <Layout />
+            <CadUsuario />
+          </PrivateRoute>} />
+        <Route  path="/usuarios/:id" element={
+          <PrivateRoute>
+            <Layout />
+            <CadUsuario />
           </PrivateRoute>} />
         <Route path="/login" element={<Login/>} />     
       </Routes>
