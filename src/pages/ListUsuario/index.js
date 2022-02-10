@@ -155,7 +155,7 @@ function ListUsuario(props) {
   return (
     <div className="p-margin-formularios">
       <form id="formUsuarios" className="p-fluid" >
-        <Panel header="Mesas">
+        <Panel header="Usuários">
           <Toast ref={toast} position="top-right" />
           <div className="p-fluid p-formgrid p-grid">
             <div className="p-field p-col-12 p-md-3">
@@ -178,7 +178,6 @@ function ListUsuario(props) {
               <Column field="id"  header="Id"></Column>
               <Column field="login" header="Login"></Column>
               <Column field="nome"  header="Nome"></Column>
-              <Column field="numero"  header="Número"></Column>
               <Column body={actionBodyTemplate} header="Ações"  bodyStyle={{ textAlign: 'center' }}>
                
               </Column>

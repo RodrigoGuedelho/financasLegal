@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import ListUsuario from "./pages/ListUsuario";
 import CadUsuario from "./pages/CadUsuario";
 import Layout from "./components/Layout";
+import CadGrupoConta from "./pages/CadGrupoConta";
 
 import auth from "./auth";
 
@@ -39,6 +40,13 @@ export default function RoutesApp(props) {
             <Layout />
             <CadUsuario />
           </PrivateRoute>} />
+        <Route  path="/grupo-contas/add" element={
+          <PrivateRoute>
+            <Layout />
+            <CadGrupoConta />
+          </PrivateRoute>} />
+
+        
         <Route path="/login" element={<Login/>} />     
       </Routes>
     </BrowserRouter>
