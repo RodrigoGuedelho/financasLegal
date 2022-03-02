@@ -9,6 +9,7 @@ import { Image } from 'primereact/image';
 import Util from "../../utils/Util";
 import usuarioService from "../../services/UsuarioService";
 import {useParams} from "react-router-dom";
+import auth from "../../auth";
 function CadUsuario(props) {
   const [login, setLogin] = useState('');
   const [nome, setNome] = useState('');
@@ -17,7 +18,7 @@ function CadUsuario(props) {
   //const {match} = props;
   console.log("Match", props)
   //const {id} = match.params;
-  var {id} = useParams();
+  const [id, setId] = useState(null);
   const [imagem, setImagem] = useState(null);
 
   async function salvar(e) {
@@ -72,20 +73,24 @@ function CadUsuario(props) {
   }
 
 
-  useEffect(async () => {
-    if(id !== undefined){
-      const usuario = await usuarioService.getUsuario(id);
-      if(usuario) {
-        setLogin(usuario.login);
-        setNome(usuario.nome);
+  useEffect(() => { 
+    async function configuracaoUsuario() {
+      if (auth.isAuthenticated()) {
+        const usuario = await usuarioService.findUsuarioLogado();
+        if(usuario) {
+          setId(usuario.id);
+          setLogin(usuario.login);
+          setNome(usuario.nome);
 
-        const imagemUsuario = await usuarioService.getImagem(id);
+          const imagemUsuario = await usuarioService.getImagem(id);
 
-        if (!Util.isEmpty(imagemUsuario)) {
-          setImagem(imagemUsuario);
+          if (!Util.isEmpty(imagemUsuario)) {
+            setImagem(imagemUsuario);
+          }
         }
-      } 
+      }
     }
+    configuracaoUsuario();
   }, []);
 
   return (

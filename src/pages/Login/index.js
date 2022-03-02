@@ -5,6 +5,7 @@ import {Button} from "primereact/button";
 import { Toast } from "primereact/toast";
 import auth from "../../auth";
 import "./style.css";
+import { Link } from "react-router-dom";
 //import { ReactComponent as Logo } from '../../assets/logo.svg' ; 
 
 function Login() {
@@ -44,6 +45,9 @@ function Login() {
                 <label htmlFor="senha" className="p-d-block">Senha</label>
                 <Password id="senha" aria-describedby="username2-help" 
                   onChange={e => setPassword(e.target.value)} toggleMask feedback={false}/>
+            </div>
+            <div className="p-field ">
+                <Link  to="/usuarios/add" >Cadastre-se</Link>
             </div>
 
             

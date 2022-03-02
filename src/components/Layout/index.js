@@ -63,17 +63,12 @@ function Layout() {
       ]
     },
     {
-      label:'Usuarios',
+      label:'Configurações',
       icon:'pi pi-fw pi-file',
       items:[
           {
-            label:'Novo',
-            icon:'pi pi-fw pi-plus',
-            url: "/usuarios/add"
-          },
-          {
-            label:'Listar',
-            icon:'pi pi-fw pi-search',
+            label:'Editar Informações',
+            icon:'pi pi-fw pi-pencil',
             url: "/usuarios"
           }
               
@@ -94,7 +89,7 @@ function Layout() {
 
   const leftContents = (
     <React.Fragment>
-      <Button id="button-logo"  onClick={() => setVisibleSidebar(true)}>{/*<Logo />*/}</Button>   
+      <Button id="button-logo" icon="pi pi-bars"  onClick={() => setVisibleSidebar(true)}>{/*<Logo />*/}</Button>   
       <Link className="link-menu" to="/">Finanças Legal</Link> 
     </React.Fragment>
   );

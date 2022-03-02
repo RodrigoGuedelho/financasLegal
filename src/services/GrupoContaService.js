@@ -19,7 +19,7 @@ class GrupoContaService {
   async editar(grupoConta) {
     var retorno = ""; 
     try {
-      retorno = await api.post("/api/grupo-contas/" + grupoConta.id, 
+      retorno = await api.put("/api/grupo-contas/" + grupoConta.id, 
         JSON.stringify(grupoConta), util.getConfigHeaderAuthorization());
       console.log("retorno", retorno);
       return retorno;

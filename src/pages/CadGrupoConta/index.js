@@ -2,7 +2,7 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Panel } from "primereact/panel";
 import { Toast } from "primereact/toast";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import grupoContaService from "../../services/GrupoContaService";
 
@@ -10,6 +10,8 @@ function CadGrupoConta(props) {
   const [descricao, setDescricao] = useState('');
   const toast = useRef(null);
   var {id} = useParams();
+
+
 
   async function salvar(e) {
     var response = null;
@@ -21,10 +23,13 @@ function CadGrupoConta(props) {
         id : id? id : null,
         descricao : descricao
       }
-      response = await grupoContaService.salvar(body);
+      if (id !== null && id != undefined)
+        response = await grupoContaService.editar(body);
+      else
+        response = await grupoContaService.salvar(body);
 
       if (response.data != undefined)
-        showMessage("Grupo de contas salvo com suecessio.","success", "Operação");
+        showMessage("Operação realizada com sucesso.","success", "Operação");
       else {
         showMessage(response.error,"error", "Operação");
       }
@@ -45,6 +50,15 @@ function CadGrupoConta(props) {
   const showMessage = (mensagem, tipo, titulo) => {
     toast.current.show({severity:tipo, summary: titulo, detail:mensagem, life: 3000});
   }
+
+  useEffect(async () => {
+    if(id !== undefined && id !== null){
+      const grupoConta = await grupoContaService.find('', id, 'ATIVO');
+      console.log("grupoCOnta ", grupoConta)
+      if(grupoConta) 
+        setDescricao(grupoConta[0].descricao);
+    }
+  }, []);
 
   return (
   <div className="p-margin-formularios">

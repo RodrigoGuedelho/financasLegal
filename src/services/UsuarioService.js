@@ -28,23 +28,16 @@ class UsuarioService {
     }
   }
 
-  async pesquisar(login, nome, id, status) {
+  async findUsuarioLogado() {
     var retorno = ""; 
     try {
-      var uri = "/api/usuarios?status=" + status;
-      if (!util.isEmpty(login))
-        uri += "&login=" + login;
-      if (!util.isEmpty(nome))
-        uri += "&nome=" + nome;
-      if (!util.isEmptyNumber(id) && id > 0)
-        uri += "&id=" + id;
+      var uri = "/api/usuarios/logado";
       
       retorno = await api.get(uri,  util.getConfigHeaderAuthorization());
       return retorno.data;
     } catch (error) {
-      if (error.toString().includes('403'))
-        auth.logout();
-      return [];
+      util.verificarAutorizacao(error.response.data);
+      return error.response.data;
     }
   }
 
