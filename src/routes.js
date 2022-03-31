@@ -8,6 +8,7 @@ import CadGrupoConta from "./pages/CadGrupoConta";
 
 import auth from "./auth";
 import ListGrupoConta from "./pages/ListGrupoConta";
+import CadConta from "./pages/CadConta";
 
 function PrivateRoute({children}) {
   return auth.isAuthenticated() ? children  : <Navigate to="/login"/>    
@@ -44,6 +45,18 @@ export default function RoutesApp(props) {
             <Layout />
             <CadGrupoConta />
           </PrivateRoute>} />
+
+          <Route  path="/contas/add" element={
+          <PrivateRoute>
+            <Layout />
+            <CadConta />
+          </PrivateRoute>} /> 
+
+          <Route  path="/contas/:id" element={
+          <PrivateRoute>
+            <Layout />
+            <CadConta />
+          </PrivateRoute>} />          
 
         
         <Route path="/login" element={<Login/>} /> 

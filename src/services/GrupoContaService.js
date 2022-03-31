@@ -8,7 +8,6 @@ class GrupoContaService {
     try {
       retorno = await api.post("/api/grupo-contas", 
         JSON.stringify(grupoConta), util.getConfigHeaderAuthorization());
-      console.log("retorno", retorno);
       return retorno;
     } catch (error) {
       util.verificarAutorizacao(error.response.data);

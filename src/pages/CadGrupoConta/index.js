@@ -10,9 +10,6 @@ function CadGrupoConta(props) {
   const [descricao, setDescricao] = useState('');
   const toast = useRef(null);
   var {id} = useParams();
-
-
-
   async function salvar(e) {
     var response = null;
     try {
@@ -51,13 +48,16 @@ function CadGrupoConta(props) {
     toast.current.show({severity:tipo, summary: titulo, detail:mensagem, life: 3000});
   }
 
-  useEffect(async () => {
-    if(id !== undefined && id !== null){
-      const grupoConta = await grupoContaService.find('', id, 'ATIVO');
-      console.log("grupoCOnta ", grupoConta)
-      if(grupoConta) 
-        setDescricao(grupoConta[0].descricao);
+  useEffect(() => {
+    async function carregaDados() {
+      if(id !== undefined && id !== null){
+        const grupoConta = await grupoContaService.find('', id, 'ATIVO');
+        console.log("grupoCOnta ", grupoConta)
+        if(grupoConta) 
+          setDescricao(grupoConta[0].descricao);
+      }
     }
+    carregaDados();    
   }, []);
 
   return (

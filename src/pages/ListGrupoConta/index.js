@@ -71,7 +71,7 @@ function ListGrupoConta(props) {
   function actionBodyTemplate(rowData) {   
     return (
         <React.Fragment>
-            <Menu id="menuAcoes" model={items} popup ref={menu} id="popup_menu" />
+            <Menu id="menuAcoes" model={items} popup ref={menu}/>
             <Button icon="pi pi-ellipsis-v" onClick={(e)=> showMenu(e, rowData)} aria-controls="popup_menu" aria-haspopup  className="p-button-rounded" />
         </React.Fragment>
     );
