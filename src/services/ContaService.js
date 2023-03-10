@@ -38,16 +38,29 @@ class ContaService {
     }
   }
 
-  async find(descricao, id, status, tipo) {
+  async findById(id) {
     var retorno = ""; 
     try {
-      let uri = "/api/contas/?status=" + status 
+      retorno = await api.get("/api/contas/" + id, 
+        util.getConfigHeaderAuthorization());
+      return retorno;
+    } catch (error) {
+      util.verificarAutorizacao(error.response.data);
+      return error.response.data;
+    }
+  }
+
+  async find(dataInicio, dataFim, descricao, id, status, tipo) {
+    var retorno = ""; 
+    try {
+      let uri = "/api/contas/?status=" + status + "&&dataInicio=" + dataInicio 
+        + "&&dataFim=" + dataFim;
       if (!util.isEmpty(descricao))
-        uri += "&& descricao=" + descricao;
+        uri += "&&descricao=" + descricao;
       if (!util.isEmptyNumber(id))
-        uri += "&& id=" + id;
+        uri += "&&id=" + id;
       if (!util.isEmpty(tipo))
-        uri += "&& tipo=" + tipo;
+        uri += "&&tipo=" + tipo;
 
       retorno = await api.get(uri, util.getConfigHeaderAuthorization());
       return retorno.data;
